@@ -10,7 +10,7 @@
                             </h4>
                         </div>
                     <div class="col-12 col-md-2">
-                        <button class="btn btn-dark btn-block">
+                        <button class="btn btn-dark btn-block btn-novo">
                             Adicionar
                         </button>
                     </div>
@@ -41,6 +41,7 @@
     </div>
 </div>
 
+<!--Modal-->
 <div id="modal-tipo" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="modal-tipo" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
@@ -54,8 +55,12 @@
                 <p>Content</p>
             </div>
             <div class="modal-footer">
-                Footer
+                <button class="btn btn-secondary" data-dismiss="modal" aria-label="Close"><i class="fa-solid fa-circle-xmark"></i> Fechar</button>
+                <button class="btn btn-primary btn-salvar"><i class="fa-solid fa-floppy-disk"></i> Salvar </button>
             </div>
         </div>
     </div>
 </div>
+
+<script src="src/tipo/controle/novo-tipo.js"></script>
+<script src="src/tipo/controle/salvar-tipo.js"></script>
