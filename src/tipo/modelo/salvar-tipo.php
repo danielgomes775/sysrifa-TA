@@ -1,14 +1,14 @@
 <?php
 
     //obter a nossa conexão com o banco de dados
-    include('../../conexao/conm.php ');
+    include('../../conexao/conm.php');
 
     //Obter os dados obtidos do formulário via request
     $requestData = $_REQUEST;
 
     //Verificação de campos obrigatórios do formulário
     if(empty($requestData['NOME'])){
-            //Caso a variçavel venha vazia do formulário, retornar um erro
+            //Caso a variavel venha vazia do formulário, retornar um erro
     $dados = array(
         "tipo" => 'error',
         "mensagem" => 'Existe(m) campo(s) obrigatório(s) não preenchido(s)!'
@@ -18,16 +18,16 @@
           $ID = isset($requestData['ID']) ? $requestData['ID'] : '';
           $operacao = isset($requestData['operacao']) ? $requestData['operacao'] : '';
 
-          //Verificação para cadstro ou atualização de registro
+          //Verificação para cadastro ou atualização de registro
           if($operacao = 'insert') {
               //Comandos para o INSERT no banco de dados ocorrerem
               try{
-                  $stmt = $pdo->('INSERT INTO TIPO (NOME) VALUES (:a)')
+                  $stmt = $pdo->('INSERT INTO TIPO (NOME) VALUES (:a)');
                   $stmt->execute(array(
                     ':a' => utf8_decode($requestData['NOME'])
-                  ))
+                  ));
                   $dados = array(
-                    "tipo" => 'error',
+                    "tipo" => 'success',
                     "mensagem" => 'Registro salvo com sucesso.'
                 );
               } catch(PDOException $e) {
@@ -39,13 +39,13 @@
           } else {
               //Se a nossa operação vir vazia, então iremos realizar um update no banco de dados
               try{
-                $stmt = $pdo->('UPDATE TIPO SET NOME = :a WHERE ID= :id');
+                $stmt = $pdo->('UPDATE TIPO SER NOME = :a WHERE ID= :id');
                 $stmt->execute(array(
                   ':id' => $ID,
                   ':a' => utf8_decode($requestData['NOME'])
-                ))
+                ));
                 $dados = array(
-                  "tipo" => 'error',
+                  "tipo" => 'success',
                   "mensagem" => 'Registro atualizado com sucesso.'
               );
             } catch(PDOException $e) {
